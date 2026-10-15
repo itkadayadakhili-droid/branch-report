@@ -292,7 +292,8 @@
     const pages = $('#pages');
     pages.innerHTML = window.renderReport(D, R.pages);
     fitWords(pages);
-    pages.querySelectorAll('[data-edit]').forEach((s) => s.setAttribute('contenteditable', 'plaintext-only'));
+    // R.noInlineEdit: نسخ الإدخال المبسّطة لا تسمح بتعديل النصوص من المعاينة
+    if (!R.noInlineEdit) pages.querySelectorAll('[data-edit]').forEach((s) => s.setAttribute('contenteditable', 'plaintext-only'));
     document.title = R.fileName(D).split('-').join(' ');
     fitZoom();
   }

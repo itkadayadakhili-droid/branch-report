@@ -121,7 +121,9 @@
     if (!type || name.startsWith(type)) return name;
     return `${type} ${name}`;
   }
-  const tok = (s) => String(s ?? '').split('{الجهة}').join(entity()).split('{الشهر}').join(D.month).split('{السنة}').join(D.year);
+  // {الفترة}: «الأسبوع الثاني من شهر أيلول» عند اختيار أسبوع، وإلا «شهر أيلول»
+  const periodText = () => (D.period && D.period !== 'الشهر كاملاً' ? `${D.period} من شهر ${D.month}` : `شهر ${D.month}`);
+  const tok = (s) => String(s ?? '').split('{الجهة}').join(entity()).split('{الفترة}').join(periodText()).split('{الشهر}').join(D.month).split('{السنة}').join(D.year);
   const ed = (path) => `<span data-edit="${path}">${esc(tok(get(path)))}</span>`;
 
   function rowsOf(path, sort) {
