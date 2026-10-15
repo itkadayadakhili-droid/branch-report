@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محرر تقرير الأفرع</title>
+<link rel="stylesheet" href="app/editor.css">
+<link rel="stylesheet" href="app/mobile.css">
+<script src="app/editor.js"></script>
+<script src="app/violations.js"></script>
+<script src="app/syria-map.js"></script>
+<script src="app/report-branch.js"></script>
+<script src="app/mobile.js"></script>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0D1D41">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="تقرير الأفرع">
+<script>if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));</script>
+</head>
+<body>
+<div class="app">
+  <header class="toolbar">
+    <div class="brand"><img src="assets/dpd-shield.png" alt=""> <span class="brand-name"></span></div>
+    <span id="status"></span>
+    <button id="btn-reset" class="ghost" title="استعادة بيانات القالب الأصلي">↺ استعادة القالب</button>
+    <button id="btn-open" title="فتح ملف بيانات محفوظ">📂 فتح ملف</button>
+    <button id="btn-save" title="حفظ البيانات في ملف">💾 حفظ البيانات</button>
+    <button id="btn-pdf" class="primary" title="تصدير التقرير بصيغة PDF">⬇ تصدير PDF</button>
+    <input type="file" id="file" accept=".json,application/json" hidden>
+  </header>
+  <div class="main">
+    <aside id="form"></aside>
+    <main id="preview"><div id="pages"></div></main>
+  </div>
+</div>
+</body>
+</html>
